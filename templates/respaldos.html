@@ -1,0 +1,65 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+
+{% block contenido %}
+    {% if mensaje %}
+        <script>
+            alert("Operación realizada exitosamente");
+            window.history.back();
+        </script>
+    {% endif %}
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-4 col-md-5">
+                    <div class="card card-user">
+                        <div class="image">
+                            <img src="{% static 'img/backup.png' %}" alt="..."/>
+                        </div>
+                        <div class="content">
+                            <p class="description text-center">
+                                Aquí restaura a la ultima versión de respaldo que se tenga <br>
+                                en la base de datos.
+                            </p>
+                        </div>
+                        <hr>
+                        <div class="text-center">
+                            <div class="row">
+                                <div class="col-md-3 col-md-offset-1">
+                                    <a href="{% url 'superware:restaurarUltimo' %}" class="btn btn-primary btn-fill">Restaurar a ultimo respaldo</a>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-8 col-md-7">
+                    <div class="card card-user">
+                        <div class="image">
+                            <img src="{% static 'img/backup2.jpeg' %}" alt="..."/>
+                        </div>
+                        <div class="content">
+                            <p class="description text-center">
+                               Ejecutar un nuevo respaldo de la base de datos. <br>
+                                Esta opción permite crear un respaldo de la base de datos automaticamente
+                            </p>
+                        </div>
+                        <hr>
+                        <div class="text-center">
+                            <div class="row">
+                                <div class="col-md-3 col-md-offset-1">
+                                    <a href="{% url 'superware:crearRespaldo' %}" class="btn btn-primary btn-fill">Nuevo Respaldo</a>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

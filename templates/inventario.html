@@ -1,0 +1,72 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% load permission_tags %}
+
+{% block contenido %}
+    {% if mensaje %}
+        <script>
+            alert("Transacción hecha correctamente");
+        </script>
+    {% endif %}
+    <div class="content">
+        <div class="col-lg-3 col-sm-4">
+            <div class="card">
+                <div class="content">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <div class="icon-big icon-info text-center">
+                                <i class="ti-reload"></i>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="numbers">
+                                <p><a class="btn btn-success btn-fill" href="{% url 'superware:agregarArticulo' %}">Agregar articulo</a></p>
+                                <p>&ensp;</p>
+                                <p><a class="btn btn-info btn-fill">Buscar articulo(s)</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="card card-plain">
+                <div class="header">
+                    <h4 class="title">Articulos de bodega</h4>
+                    <p class="category">lista de articulos y sus cantidades</p>
+                </div>
+                <div class="content table-responsive table-full-width">
+                    <table class="table table-hover">
+                        <thead>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Stock minimo</th>
+                        <th>Acciones</th>
+                        </thead>
+                        <tbody>
+                        {% for articulo in articulos %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ articulo.nombre }}</td>
+                                <td><b><font color="green">${{ articulo.precio }}</font></b></td>
+                                <td>{{ articulo.stock }}</td>
+                                <td>10</td>
+                                <td>
+                                    {% if user|can:'inventarioEditarEliminar' %}
+                                        <a class="btn btn-sm btn-info btn-icon" href="{% url 'superware:editarArticulo' articulo.pk %}"><i class="fa ti-pencil"></i></a>
+                                        <a class="btn btn-sm btn-danger btn-icon" href="{% url 'superware:eliminarArticulo' articulo.pk %}"><i class="fa ti-close"></i></a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

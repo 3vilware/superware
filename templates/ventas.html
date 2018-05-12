@@ -1,0 +1,255 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+
+{% block contenido %}
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card">
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    <div class="icon-big icon-warning text-center">
+                                        <i class="ti-tag"></i>
+                                    </div>
+                                </div>
+                                <div class="col-xs-7">
+                                    <div class="numbers">
+                                        <p>Turno</p>
+                                        TG42 C18
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="footer">
+                                <hr />
+                                <div class="stats">
+                                    <i class="ti-reload"></i> REFRESCAR
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card">
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    <div class="icon-big icon-danger text-center">
+                                        <i class="ti-wallet"></i>
+                                    </div>
+                                </div>
+                                <div class="col-xs-7">
+                                    <div class="numbers">
+                                        <p>Articulos</p>
+                                        4
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="footer">
+                                <hr />
+                                <div class="stats">
+                                    <i class="ti-calendar"></i> Hoy
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card">
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    <div class="icon-big icon-success text-center">
+                                        <i class="ti-money"></i>
+                                    </div>
+                                </div>
+                                <div class="col-xs-7">
+                                    <div class="numbers">
+                                        <p>Total de compra</p>
+                                        $723.90
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="footer">
+                                <hr />
+                                <div class="stats">
+                                    <i class="ti-timer"></i> 13:23
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card">
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <div class="icon-big icon-success text-center">
+                                        <i class="ti-credit-card"></i>
+                                    </div>
+                                </div>
+                                <div class="col-xs-7">
+                                    <div class="numbers">
+                                        <p><button class="btn btn-warning btn-fill">FINALIZAR COBRO</button></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-4 col-md-5">
+                    <div class="card card-user">
+                        <div class="image">
+                            <img src="assets/img/pantalon.jpeg" alt="..." />
+                        </div>
+                        <div class="content">
+                            <div class="author">
+                                <h4 class="title">Pants Sport<br />
+                                    <a href="#"><small></small></a>
+                                </h4>
+                            </div>
+                            <p class="description text-center">
+                                <br><br> Pantalon Sport <i>talla s/ch</i>
+                            </p>
+                        </div>
+                        <hr>
+                        <div class="text-center">
+                            <div class="row">
+                                <div class="col-md-3 col-md-offset-1">
+                                    <h5>12<br /><small>Existencia</small></h5>
+                                </div>
+                                <div class="col-md-3">
+                                    <h5>1<br /><small>Cobrados</small></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">Articulos</h4>
+                        </div>
+                        <div class="content">
+                            <ul class="list-unstyled team-members">
+                                <li>
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <div class="avatar">
+                                                <img src="assets/img/shampoo.jpeg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            Shampoo H&S
+                                            <br />
+                                            <span class="text-success"><small>$120</small></span>
+                                        </div>
+
+                                        <div class="col-xs-3 text-right">
+                                            <btn class="btn btn-sm btn-danger btn-icon"><i class="fa ti-close"></i></btn>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <div class="avatar">
+                                                <img src="assets/img/camisa.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            Camisa
+                                            <br />
+                                            <span class="text-success"><small>$250</small></span>
+                                        </div>
+
+                                        <div class="col-xs-3 text-right">
+                                            <btn class="btn btn-sm btn-danger btn-icon"><i class="fa ti-close"></i></btn>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <div class="avatar">
+                                                <img src="assets/img/desodorante.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            Desodorante
+                                            <br />
+                                            <span class="text-success"><small>$48</small></span>
+                                        </div>
+
+                                        <div class="col-xs-3 text-right">
+                                            <btn class="btn btn-sm btn-danger btn-icon"><i class="fa ti-close"></i></btn>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-7">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">Detalle de articulo marcado</h4>
+                        </div>
+                        <div class="content">
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <label>Código de barras</label>
+                                            <input type="text" class="form-control border-input" placeholder="Código" value="978020137962">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Precio</label>
+                                            <button type="text" class="btn btn-success btn-fill btn-wd">$300</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Departamento</label>
+                                            <input type="text" class="form-control border-input" disabled placeholder="" value="Ropa">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Categoría</label>
+                                            <input type="text" class="form-control border-input" disabled placeholder="" value="Pantalones">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Observaciones</label>
+                                            <textarea rows="5" class="form-control border-input" disabled placeholder="Here can be your description" value="Mike">Esta prenda biene reducida. Por lo que las devoluciones se cancelaron.</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <i class="ti-shopping-cart"></i>
+                                    <button type="submit" class="btn btn-info btn-fill btn-wd">Agregar al carrito</button>
+                                </div>
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,115 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+
+{% block contenido %}
+    <div class="content">
+    <!-- horizontal tabs -->
+    <div class="nav-tabs-navigation">
+        <div class="nav-tabs-wrapper">
+            <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+                <li class="active"><a href="#home" data-toggle="tab">Personal</a></li>
+                <li><a href="#profile" data-toggle="tab">Finanzas</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="my-tab-content" class="tab-content text-center">
+    <div class="tab-pane active" id="home">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Personal laborando</h4>
+                        <label>Buscar</label>
+                        <div class="form-group">
+                            <input type="text" value="" placeholder="Por Nombre" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                        <table class="table table-striped">
+                            <thead>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Sucursal</th>
+                            <th>Puesto</th>
+                            <th>Salario</th>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Pepe Fulano Gomez</td>
+                                <td>San Juan</td>
+                                <td>Cajero</td>
+                                <td>$90,000</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Minerva Del Toro</td>
+                                <td>Texcapan</td>
+                                <td>Auxiliar</td>
+                                <td>$50,000</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Daniel Rodriguez</td>
+                                <td>San Juan</td>
+                                <td>Gerente</td>
+                                <td>$20,000</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-pane" id="profile">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Ultimas compras</h4>
+                        <label>Buscar</label>
+                        <div class="form-group">
+                            <input type="text" value="" placeholder="Por Folio" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                        <table class="table table-striped">
+                            <thead>
+                            <th>Folio de compra</th>
+                            <th>Atendido por</th>
+                            <th>Sucursal</th>
+                            <th>Monto</th>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Pepe Fulano Gomez</td>
+                                <td>San Juan</td>
+                                <td>$780</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Minerva Del Toro</td>
+                                <td>Texcapan</td>
+                                <td>$2400</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Daniel Rodriguez</td>
+                                <td>San Juan</td>
+                                <td>$1239</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

@@ -92,10 +92,10 @@ class DetalleVenta(models.Model):
     precioFinal = models.FloatField(null=True)
     fecha = models.DateTimeField(auto_now=True)
     sucursal = models.ForeignKey(Sucursal)
-    metodoPago = models.ForeignKey(MetodoPago)
+    metodoPago = models.ForeignKey(MetodoPago, null=True)
 
 class Venta(models.Model):
-    articulo = models.ForeignKey(Articulo)
+    articulo = models.ForeignKey(Articulo, null=True)
     cantidad = models.IntegerField(null=True)
     precio = models.FloatField(null=True)
     folio = models.ForeignKey(DetalleVenta, on_delete=models.CASCADE) #indice principal

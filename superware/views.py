@@ -1,19 +1,24 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import threading
+import time
+
+from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.core import management
+from django.core.exceptions import ObjectDoesNotExist
+from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
+from django.db import transaction
 from django.http import HttpResponse, HttpResponseRedirect
+from django.http import JsonResponse
 from django.shortcuts import render
 from rolepermissions.decorators import has_role_decorator
-from superware.models import *
-import os
-from django.core import management
-from django.conf import settings
+
 from superware.forms import *
-from django.db import transaction
-from django.db import connections
+
 
 # Create your views here.
 
@@ -21,6 +26,7 @@ from django.db import connections
 def index(request):
     userId = User.objects.get(username=request.user.username)
     empleado = Empleado.objects.get(usuario=userId)
+
     return render(request,'ventas.html', {"usuario":empleado})
 
 def usuario_login(request):
@@ -59,6 +65,9 @@ def consultas(request):
 def listarInventario(request):
     userId = User.objects.get(username=request.user.username)
     empleado = Empleado.objects.get(usuario=userId)
+
+    newThread = threading.Thread(target=checkStock)
+    newThread.start()
 
     articulos = Articulo.objects.all()
 
@@ -124,14 +133,16 @@ def editarArticulo(request, idarticulo):
     return render(request, 'inventario.html', contexto)
 
 
-
+@transaction.atomic()
 @login_required
 def eliminarArticulo(request, idarticulo):
     userId = User.objects.get(username=request.user.username)
     empleado = Empleado.objects.get(usuario=userId)
 
     articulo = Articulo.objects.get(pk=idarticulo)
-    articulo.delete()
+    with transaction.atomic():
+        articulo.delete()
+        articulo.delete(using='matrix')
 
     articulos = Articulo.objects.all()
     contexto = {"usuario": empleado, "articulos": articulos}
@@ -166,3 +177,85 @@ def restaurarUltimo(request):
     print "base de datos restaurada"
     contexto = {"usuario": empleado, "mensaje":1}
     return render(request, 'respaldos.html', contexto)
+
+def checkStock():
+    print "ON!!"
+    while True:
+        articulos = Articulo.objects.all()
+        for articulo in articulos:
+            stock = articulo.stock
+
+            if stock < 10:
+                print "Deficiencia en el producto: ", articulo.nombre
+                subject = 'AVISO de stock'
+                message = ' El producto <b>' + articulo.nombre + '</b> se esta agotando '
+                email_from = settings.EMAIL_HOST_USER
+                recipient_list = ['ricardo.amador@alumnos.udg.mx', ]
+                send_mail(subject, message, email_from, recipient_list)
+        time.sleep(600)
+
+    return 1
+
+# Arroja los datos a ventas
+def agregarArticuloCarrito(request):
+    barcode = request.GET.get('barcode')
+    try:
+        articulo = Articulo.objects.get(codigoBarras=barcode)
+        if articulo.stock > 0:
+            data = {"error":0, "nombreArticulo":articulo.nombre, "precio":str(articulo.precio),
+                    "departamento":str(articulo.categoria.departamento), "categoria":str(articulo.categoria),
+                    "observaciones":articulo.observaciones, "descripcion":articulo.descripcion}
+        else:
+            data = {"error": 1, "message": "Sin stock!"}
+    except ObjectDoesNotExist:
+        data = {"error":1, "message": "No existe el articulo"}
+
+    return JsonResponse(data)
+
+
+def addToCart(request):
+    barcode = request.GET.get('barcode')
+    detalleVenta = DetalleVenta.objects.all().last()
+    articulo = Articulo.objects.get(codigoBarras=barcode)
+    newVenta = Venta(cantidad=1, precio=articulo.precio, articulo=articulo, folio=detalleVenta)
+
+    try:
+        newVenta.save()
+        data = {"error": 0}
+    except ValueError:
+        data = {"error":1, "message":"Ocurrio un error"}
+
+    return JsonResponse(data)
+
+# Hacer distribuida->
+def finalizarCobro(request):
+    userId = User.objects.get(username=request.user.username)
+    empleado = Empleado.objects.get(usuario=userId)
+
+    lastDetalle = DetalleVenta.objects.all().last()
+    lastVentas = Venta.objects.filter(folio=lastDetalle.pk)
+    total = 0
+    listaArticulos = []
+    for v in lastVentas:
+        print v.precio
+        if v.articulo is not None:
+            v.articulo.stock = v.articulo.stock -1
+            listaArticulos.append(v.articulo)
+        total = total + int(v.precio)
+    lastDetalle.precioFinal = total
+    lastDetalle.save()
+
+    newDetalleVenta= DetalleVenta(sucursal=empleado.sucursal, empleadoCobro=empleado)
+    newDetalleVenta.save()
+    newVenta = Venta(folio=newDetalleVenta, precio=0)
+    newVenta.save()
+
+    contexto = {"usuario":empleado, "total":total, "articulos":listaArticulos, "sucursal":lastDetalle.sucursal,
+                "empleadoCobro":lastDetalle.empleadoCobro, "fecha":lastDetalle.fecha}
+    return render(request, 'ticket.html', contexto)
+
+
+# de prueba
+def ticket(request, folio):
+
+    return render(request, 'ticket.html')

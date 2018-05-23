@@ -22,6 +22,7 @@
 
 
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-notify/0.2.0/css/bootstrap-notify.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="{% static 'css/themify-icons.css' %}" rel="stylesheet">
 
@@ -122,6 +123,9 @@
     </div>
 </div>
 
+{% block modal %}
+
+{% endblock %}
 
 </body>
 
@@ -139,5 +143,9 @@
 <script src="{% static 'js/paper-dashboard.js'%}"></script>
 
 <script src="{% static 'js/demo.js'%}"></script>
+
+{% block extraCode %}
+
+{% endblock %}
 
 </html>

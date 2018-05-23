@@ -43,7 +43,8 @@ INSTALLED_APPS = [
 ]
 
 DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'  #Bug en documentacion este es el correcto
-DBBACKUP_STORAGE_OPTIONS = {'location': '/home/rick/Documents/6to/abd/ProyectoABD/respaldos'}
+# DBBACKUP_STORAGE_OPTIONS = {'location': '/home/rick/Documents/6to/abd/ProyectoABD/respaldos'}
+DBBACKUP_STORAGE_OPTIONS = {'location':os.path.join((BASE_DIR,'respaldos'))}
 #DBBACKUP_GPG_RECIPIENT = ''
 
 
@@ -91,7 +92,7 @@ DATABASES = {
         'USER': 'app',
         'PASSWORD': 'test1234',
         'HOST': '149.56.135.75',
-        'PORT': '3306',  # Puerto de phpmyadmin
+        'PORT': '3306',
     },
     'matrix': {
         'ENGINE': 'django.db.backends.mysql',
@@ -149,3 +150,11 @@ STATICFILES_DIRS = [
 
 LOGIN_URL = '/application/login'
 LOGIN_REDIRECT_URL = '/'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'ricardoamadorcast@gmail.com'
+EMAIL_HOST_PASSWORD = 'pacapaca123A'

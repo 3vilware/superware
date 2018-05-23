@@ -91,7 +91,7 @@
                                 </div>
                                 <div class="col-xs-7">
                                     <div class="numbers">
-                                        <p><button class="btn btn-warning btn-fill">FINALIZAR COBRO</button></p>
+                                        <p><a  href="{% url 'superware:finalizarCobro' %}" class="btn btn-warning btn-fill">FINALIZAR COBRO</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -205,13 +205,13 @@
                                     <div class="col-md-5">
                                         <div class="form-group">
                                             <label>Código de barras</label>
-                                            <input type="text" class="form-control border-input" placeholder="Código" value="978020137962">
+                                            <input id="barCode" type="text" class="form-control border-input" maxlength="12" placeholder="Código">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Precio</label>
-                                            <button type="text" class="btn btn-success btn-fill btn-wd">$300</button>
+                                            <button type="text" class="btn btn-success btn-fill btn-wd" id="precio">$0.0</button>
                                         </div>
                                     </div>
                                 </div>
@@ -220,13 +220,13 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Departamento</label>
-                                            <input type="text" class="form-control border-input" disabled placeholder="" value="Ropa">
+                                            <input type="text" class="form-control border-input" disabled placeholder="" id="departamento">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Categoría</label>
-                                            <input type="text" class="form-control border-input" disabled placeholder="" value="Pantalones">
+                                            <input type="text" class="form-control border-input" disabled id="categoria">
                                         </div>
                                     </div>
                                 </div>
@@ -234,7 +234,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Observaciones</label>
-                                            <textarea rows="5" class="form-control border-input" disabled placeholder="Here can be your description" value="Mike">Esta prenda biene reducida. Por lo que las devoluciones se cancelaron.</textarea>
+                                            <textarea rows="5" class="form-control border-input" disabled id="observaciones"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -248,8 +248,72 @@
                     </div>
                 </div>
 
-
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block extraCode %}
+    <script>
+        var barcode = 0;
+        $("#barCode").on('input propertychange paste', function(){
+            console.log("you are in");
+            barcode = $(this).val();
+            if($(this).val().length > 11){
+                //alert("Lo hiciste!");
+                console.log($(this).val());
+                $.ajax({
+                    url: '{% url 'superware:agregarArticuloCarrito' %}',
+                    //data: form.serialize(),
+                    data: {
+                        'barcode': barcode
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.error) {
+                            alert(data.message);
+                        }
+                        else{
+                            console.log("articulo es: "+ data.nombreArticulo);
+                            console.log("categoria: "+ data.categoria);
+                            $("#precio").text('$'+data.precio);
+                            $("#categoria").val(data.categoria);
+                            $("#departamento").val(data.departamento);
+                            $("#observaciones").text(data.observaciones);
+                        }
+                    }
+                });
+            }
+        });
+
+        $(document).keypress(function(e) {
+            if(e.which == 13) {
+                $.ajax({
+                    url: '{% url 'superware:addToCart' %}',
+                    data: {
+                        'barcode': barcode
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.error) {
+                            alert(data.message);
+                        }
+                        else{
+                            $.notify({
+                                title: "<strong>Articulo añadido al carrito de compras</strong> ",
+                                message: ""
+                            });
+                        }
+                    }
+                });
+
+            }
+        });
+
+        {% if ticket %}
+            $( document ).ready(function() {
+                $('#showTicket').modal('toggle');
+            });
+        {% endif %}
+    </script>
 {% endblock %}

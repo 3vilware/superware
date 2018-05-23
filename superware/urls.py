@@ -19,5 +19,9 @@ urlpatterns = [
     url(r'^restaurarUltimo/$', views.restaurarUltimo, name="restaurarUltimo"),
     url(r'^editarArticulo/(?P<idarticulo>\w+)/$', views.editarArticulo, name="editarArticulo"),
     url(r'^eliminarArticulo/(?P<idarticulo>\w+)/$', views.eliminarArticulo, name="eliminarArticulo"),
+    url(r'^agregarAlCarrito$', views.agregarArticuloCarrito, name="agregarArticuloCarrito"),
+    url(r'^addToCart', views.addToCart, name="addToCart"),
+    url(r'^finalizarCobro', views.finalizarCobro, name="finalizarCobro"),
+    url(r'^ticket/(?P<folio>\w+)/', views.ticket, name="ticket"),
 
 ]

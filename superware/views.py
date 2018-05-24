@@ -312,3 +312,7 @@ def ticket(request, folio):
 
     contexto = {"usuario": empleado, "total": total,"fecha":fecha, "articulos":listaArticulos}
     return render(request, 'ticket.html', contexto)
+
+def estadisticas(request):
+
+    return render(request, 'estadisticas.html')

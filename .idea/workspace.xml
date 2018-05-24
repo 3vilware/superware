@@ -3,17 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="0158b293-c9cc-4e67-b2a4-258baaa0d3d3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ProyectoABD/settings.py" afterPath="$PROJECT_DIR$/ProyectoABD/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ProyectoABD/urls.py" afterPath="$PROJECT_DIR$/ProyectoABD/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/superware/admin.py" afterPath="$PROJECT_DIR$/superware/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/superware/forms.py" afterPath="$PROJECT_DIR$/superware/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/superware/models.py" afterPath="$PROJECT_DIR$/superware/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/superware/urls.py" afterPath="$PROJECT_DIR$/superware/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/superware/views.py" afterPath="$PROJECT_DIR$/superware/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/consultas.html" afterPath="$PROJECT_DIR$/templates/consultas.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/inventario.html" afterPath="$PROJECT_DIR$/templates/inventario.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ventas.html" afterPath="$PROJECT_DIR$/templates/ventas.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/estadisticas.html" afterPath="$PROJECT_DIR$/templates/estadisticas.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -65,8 +56,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/superware/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1242">
-              <caret line="310" column="93" lean-forward="false" selection-start-line="310" selection-start-column="93" selection-end-line="310" selection-end-column="93" />
+            <state relative-caret-position="495">
+              <caret line="317" column="47" lean-forward="false" selection-start-line="317" selection-start-column="47" selection-end-line="317" selection-end-column="47" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
               </folding>
@@ -78,17 +69,7 @@
         <entry file="file://$PROJECT_DIR$/../MockUp &amp; maquetado/paper-dashboard-free-v1.1.2/dashboard.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="159">
-              <caret line="272" column="40" lean-forward="true" selection-start-line="256" selection-start-column="15" selection-end-line="280" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="demo.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/demo.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="272" column="40" lean-forward="false" selection-start-line="256" selection-start-column="15" selection-end-line="280" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -108,13 +89,13 @@
         <entry file="file://$PROJECT_DIR$/ProyectoABD/settings.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="418">
-              <caret line="154" column="2" lean-forward="true" selection-start-line="154" selection-start-column="0" selection-end-line="162" selection-end-column="21" />
+              <caret line="154" column="2" lean-forward="false" selection-start-line="154" selection-start-column="0" selection-end-line="162" selection-end-column="21" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="328">
@@ -124,11 +105,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="estadisticas.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="estadisticas.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/estadisticas.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="24" column="51" lean-forward="false" selection-start-line="24" selection-start-column="51" selection-end-line="24" selection-end-column="51" />
+            <state relative-caret-position="256">
+              <caret line="75" column="38" lean-forward="false" selection-start-line="75" selection-start-column="38" selection-end-line="75" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -149,9 +130,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="801">
               <caret line="88" column="76" lean-forward="false" selection-start-line="88" selection-start-column="76" selection-end-line="88" selection-end-column="76" />
-              <folding>
-                <element signature="e#24#63#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -186,10 +165,10 @@
       <find>notifi</find>
       <find>checks</find>
       <find>detalle</find>
-      <find>consul</find>
-      <find>users be</find>
       <find>articulo</find>
       <find>por n</find>
+      <find>consul</find>
+      <find>users be</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -226,9 +205,9 @@
         <option value="$PROJECT_DIR$/templates/ventas.html" />
         <option value="$PROJECT_DIR$/superware/models.py" />
         <option value="$PROJECT_DIR$/templates/consultas.html" />
-        <option value="$PROJECT_DIR$/superware/views.py" />
         <option value="$PROJECT_DIR$/superware/urls.py" />
         <option value="$PROJECT_DIR$/templates/index.html" />
+        <option value="$PROJECT_DIR$/superware/views.py" />
         <option value="$PROJECT_DIR$/templates/estadisticas.html" />
       </list>
     </option>
@@ -784,7 +763,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527061294397</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Previo a entrega">
+      <created>1527160427021</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1527160427021</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView">
@@ -866,7 +852,8 @@
     <MESSAGE value="restauraciones basicas y respaldos basicos en inferfaz." />
     <MESSAGE value="Version de intel" />
     <MESSAGE value="Modulo de ventas casi terminado" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modulo de ventas casi terminado" />
+    <MESSAGE value="Previo a entrega" />
+    <option name="LAST_COMMIT_MESSAGE" value="Previo a entrega" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1115,9 +1102,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="22" column="34" lean-forward="false" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
-          <folding>
-            <element signature="e#25#39#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1180,50 +1165,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="11" column="20" lean-forward="false" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/ticket.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="111" column="44" lean-forward="false" selection-start-line="111" selection-start-column="35" selection-end-line="111" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ProyectoABD/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="154" column="2" lean-forward="true" selection-start-line="154" selection-start-column="0" selection-end-line="162" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/superware/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1242">
-          <caret line="310" column="93" lean-forward="false" selection-start-line="310" selection-start-column="93" selection-end-line="310" selection-end-column="93" />
-          <folding>
-            <element signature="e#24#63#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/demo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../MockUp &amp; maquetado/paper-dashboard-free-v1.1.2/dashboard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="272" column="40" lean-forward="true" selection-start-line="256" selection-start-column="15" selection-end-line="280" selection-end-column="22" />
           <folding />
         </state>
       </provider>
@@ -1240,9 +1181,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="801">
           <caret line="88" column="76" lean-forward="false" selection-start-line="88" selection-start-column="76" selection-end-line="88" selection-end-column="76" />
-          <folding>
-            <element signature="e#24#63#0" expanded="true" />
-          </folding>
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="61" column="67" lean-forward="false" selection-start-line="61" selection-start-column="67" selection-end-line="61" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProyectoABD/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="154" column="2" lean-forward="false" selection-start-line="154" selection-start-column="0" selection-end-line="162" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1254,18 +1209,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/estadisticas.html">
+    <entry file="file://$PROJECT_DIR$/templates/ticket.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="24" column="51" lean-forward="false" selection-start-line="24" selection-start-column="51" selection-end-line="24" selection-end-column="51" />
+        <state relative-caret-position="328">
+          <caret line="111" column="44" lean-forward="false" selection-start-line="111" selection-start-column="35" selection-end-line="111" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
+    <entry file="file://$PROJECT_DIR$/superware/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="61" column="67" lean-forward="false" selection-start-line="61" selection-start-column="67" selection-end-line="61" selection-end-column="67" />
+        <state relative-caret-position="495">
+          <caret line="317" column="47" lean-forward="false" selection-start-line="317" selection-start-column="47" selection-end-line="317" selection-end-column="47" />
+          <folding>
+            <element signature="e#24#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/demo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="104" column="51" lean-forward="true" selection-start-line="104" selection-start-column="51" selection-end-line="104" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../MockUp &amp; maquetado/paper-dashboard-free-v1.1.2/dashboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="272" column="40" lean-forward="false" selection-start-line="256" selection-start-column="15" selection-end-line="280" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/estadisticas.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="75" column="38" lean-forward="false" selection-start-line="75" selection-start-column="38" selection-end-line="75" selection-end-column="38" />
           <folding />
         </state>
       </provider>

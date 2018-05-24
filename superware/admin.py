@@ -17,3 +17,7 @@ def registrar_modelos(my_models):
             admin.site.register(model)
 
 registrar_modelos(modelos)
+
+
+admin.site.site_header = 'Super Admin'
+admin.site.site_title = 'SuperWare'

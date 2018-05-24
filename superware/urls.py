@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^consultas/$', views.consultas, name="consultas"),
     url(r'^ventas/$', views.index, name="ventas"),
     url(r'^inventario/$', views.listarInventario, name="listarInventario"),
+    url(r'^estadisticas/$', views.estadisticas, name="estadisticas"),
     url(r'^agregarArticulo/$', views.agregarArticulo, name="agregarArticulo"),
     url(r'^respaldos/$', views.menuRespaldos, name="menuRespaldos"),
     url(r'^nuevoRespaldo/$', views.crearRespaldo, name="crearRespaldo"),

@@ -27,7 +27,20 @@ def index(request):
     userId = User.objects.get(username=request.user.username)
     empleado = Empleado.objects.get(usuario=userId)
 
-    return render(request,'ventas.html', {"usuario":empleado})
+    listaArticulos = []
+    lastDetalle = DetalleVenta.objects.last()
+    articulosVenta = Venta.objects.filter(folio=lastDetalle.pk)
+    total = 0
+    band = False
+    for a in articulosVenta:
+        if band:
+            listaArticulos.append(a.articulo)
+            total = total+int(a.articulo.precio)
+        band = True
+    cantidad = len(listaArticulos)
+
+    contexto = {"usuario":empleado, "articulos":listaArticulos, "cantidad":cantidad, "total":total}
+    return render(request,'ventas.html', contexto)
 
 def usuario_login(request):
     if request.method == 'POST':
@@ -58,7 +71,11 @@ def consultas(request):
     userId = User.objects.get(username=request.user.username)
     empleado = Empleado.objects.get(usuario=userId)
 
-    return render(request, 'consultas.html', {"usuario": empleado})
+    empleados = Empleado.objects.all()
+    detalles = DetalleVenta.objects.all()
+
+    contexto = {"usuario": empleado, "empleados":empleados, "detalles":detalles}
+    return render(request, 'consultas.html', contexto)
 
 
 @login_required
@@ -80,10 +97,11 @@ def listarInventario(request):
 def agregarArticulo(request):
     userId = User.objects.get(username=request.user.username)
     empleado = Empleado.objects.get(usuario=userId)
-
     if request.method == 'POST':
-        formArticulo = ArticuloForm(data=request.POST)
+        print "Es post"
+        formArticulo = ArticuloForm(request.POST, request.FILES)
         if formArticulo.is_valid():
+            print "Es valido"
             with transaction.atomic():
                 formArticulo.save()
                 mensaje = "Transacción hecha correctamente"
@@ -93,8 +111,12 @@ def agregarArticulo(request):
                                precio=mirror.precio, stock=mirror.stock, codigoBarras=mirror.codigoBarras,
                                descripcion=mirror.descripcion)
                 new.save(using='matrix')
+        else:
+            print formArticulo.errors
+            return render(request, 'agregarArticulo.html', {'form':formArticulo})
 
     else:
+        print "se fue al else"
         form = ArticuloForm()
         mensaje = 0
         contexto = {"usuario": empleado, "form":form, "mensaje":mensaje}
@@ -119,6 +141,7 @@ def editarArticulo(request, idarticulo):
         if formArticulo.is_valid():
             print "EDITANDO CON INSTANCE"
             formArticulo.save()
+            #formArticulo.save(using='matrix')
     else:
         form = ArticuloForm(initial={'nombre':articulo.nombre, "categoria":articulo.categoria,
                                      "descripcion":articulo.descripcion, "observaciones":articulo.observaciones,
@@ -188,7 +211,7 @@ def checkStock():
             if stock < 10:
                 print "Deficiencia en el producto: ", articulo.nombre
                 subject = 'AVISO de stock'
-                message = ' El producto <b>' + articulo.nombre + '</b> se esta agotando '
+                message = ' El PRODUCTO' + articulo.nombre + 'SE ESTA AGOTANDO '
                 email_from = settings.EMAIL_HOST_USER
                 recipient_list = ['ricardo.amador@alumnos.udg.mx', ]
                 send_mail(subject, message, email_from, recipient_list)
@@ -204,7 +227,8 @@ def agregarArticuloCarrito(request):
         if articulo.stock > 0:
             data = {"error":0, "nombreArticulo":articulo.nombre, "precio":str(articulo.precio),
                     "departamento":str(articulo.categoria.departamento), "categoria":str(articulo.categoria),
-                    "observaciones":articulo.observaciones, "descripcion":articulo.descripcion}
+                    "observaciones":articulo.observaciones, "descripcion":articulo.descripcion,
+                    "foto":articulo.foto.url, "stock":articulo.stock}
         else:
             data = {"error": 1, "message": "Sin stock!"}
     except ObjectDoesNotExist:
@@ -212,22 +236,36 @@ def agregarArticuloCarrito(request):
 
     return JsonResponse(data)
 
-
+@login_required
 def addToCart(request):
     barcode = request.GET.get('barcode')
     detalleVenta = DetalleVenta.objects.all().last()
     articulo = Articulo.objects.get(codigoBarras=barcode)
+
+    articulos = Venta.objects.filter(folio=detalleVenta.pk)
+    cont = 0
+    total = 0
+    for v in articulos:
+        if cont > 0:
+            total = total + int(v.articulo.precio)
+        cont = cont+1
     newVenta = Venta(cantidad=1, precio=articulo.precio, articulo=articulo, folio=detalleVenta)
 
     try:
         newVenta.save()
-        data = {"error": 0}
+        data = {"error": 0, "total":total}
     except ValueError:
         data = {"error":1, "message":"Ocurrio un error"}
 
     return JsonResponse(data)
 
+@login_required
+def popOfCart(request, apk):
+
+    return 1
+
 # Hacer distribuida->
+@login_required
 def finalizarCobro(request):
     userId = User.objects.get(username=request.user.username)
     empleado = Empleado.objects.get(usuario=userId)
@@ -239,7 +277,8 @@ def finalizarCobro(request):
     for v in lastVentas:
         print v.precio
         if v.articulo is not None:
-            v.articulo.stock = v.articulo.stock -1
+            v.articulo.stock = int(v.articulo.stock) -1
+            v.articulo.save()
             listaArticulos.append(v.articulo)
         total = total + int(v.precio)
     lastDetalle.precioFinal = total
@@ -257,5 +296,19 @@ def finalizarCobro(request):
 
 # de prueba
 def ticket(request, folio):
+    userId = User.objects.get(username=request.user.username)
+    empleado = Empleado.objects.get(usuario=userId)
+    listaArticulos=[]
 
-    return render(request, 'ticket.html')
+    detalle = DetalleVenta.objects.get(pk=folio)
+    articulos = Venta.objects.filter(folio=folio)
+
+    for v in articulos:
+        listaArticulos.append(v.articulo)
+    if len(listaArticulos):
+        listaArticulos.pop(0)
+    total = detalle.precioFinal
+    fecha = detalle.fecha
+
+    contexto = {"usuario": empleado, "total": total,"fecha":fecha, "articulos":listaArticulos}
+    return render(request, 'ticket.html', contexto)

@@ -33,7 +33,6 @@ class Articulo(models.Model):
     observaciones = models.TextField(default="Ninguna")
     activo = models.BooleanField(default=True)
     foto = models.FileField(null=True)
-    #FALTA PONER EL CAMPO DESCUENTO Y ESTRUCTURARLO
 
 
 class Sucursal(models.Model):
@@ -84,6 +83,10 @@ class Empleado(models.Model):
     estatus = models.ForeignKey(EstatusEmpleado)
     sucursal = models.ForeignKey(Sucursal)
     usuario = models.OneToOneField(User)
+
+
+    def __unicode__(self):
+        return '{}'.format(self.nombre+" "+self.apellidoP+" "+self.apellidoM)
 
 #informacion de ventas
 

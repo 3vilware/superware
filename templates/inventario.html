@@ -2,6 +2,41 @@
 {% load staticfiles %}
 {% load permission_tags %}
 
+{% block modulo %}
+    <ul class="nav">
+        <li>
+            <a href="{% url 'superware:ventas' %}">
+                <i class="ti-shopping-cart-full"></i>
+                <p>Ventas</p>
+            </a>
+        </li>
+        <li class="active">
+            <a href="{% url 'superware:listarInventario' %}">
+                <i class="ti-server"></i>
+                <p>Inventario</p>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'superware:consultas' %}">
+                <i class="ti-view-list-alt"></i>
+                <p>Consultas</p>
+            </a>
+        </li>
+        <li>
+            <a href="estadisticas.html">
+                <i class="ti-stats-up"></i>
+                <p>Estadisticas</p>
+            </a>
+        </li>
+        <li class="active-pro">
+            <a href="{% url 'superware:logout' %}">
+                <i class="ti-shift-left"></i>
+                <p>Salir</p>
+            </a>
+        </li>
+    </ul>
+{% endblock %}
+
 {% block contenido %}
     {% if mensaje %}
         <script>
@@ -22,7 +57,12 @@
                             <div class="numbers">
                                 <p><a class="btn btn-success btn-fill" href="{% url 'superware:agregarArticulo' %}">Agregar articulo</a></p>
                                 <p>&ensp;</p>
-                                <p><a class="btn btn-info btn-fill">Buscar articulo(s)</a></p>
+                                <p><button class="btn btn-info btn-fill" onclick="displayBuscar()">Buscar articulo(s)</button></p>
+                            </div>
+                            <div class="buscarDiv form-group">
+                                <br>
+                                <label for="search">Busqueda:</label>
+                                <input type="text" id="search">
                             </div>
                         </div>
                     </div>
@@ -38,7 +78,7 @@
                 <div class="content table-responsive table-full-width">
                     <table class="table table-hover">
                         <thead>
-                        <th>ID</th>
+                        {#                        <th>ID</th>#}
                         <th>Nombre</th>
                         <th>Precio</th>
                         <th>Stock</th>
@@ -48,7 +88,7 @@
                         <tbody>
                         {% for articulo in articulos %}
                             <tr>
-                                <td>{{ forloop.counter }}</td>
+                                {#                                <td>{{ forloop.counter }}</td>#}
                                 <td>{{ articulo.nombre }}</td>
                                 <td><b><font color="green">${{ articulo.precio }}</font></b></td>
                                 <td>{{ articulo.stock }}</td>
@@ -69,4 +109,28 @@
         </div>
 
     </div>
+{% endblock %}
+
+{% block extraCode %}
+    <script>
+        $("#search").on("keyup", function() {
+            var value = $(this).val();
+
+            $("table tr").each(function(index) {
+                if (index !== 0) {
+
+                    $row = $(this);
+
+                    var id = $row.find("td:first").text();
+
+                    if (id.indexOf(value) !== 0) {
+                        $row.hide();
+                    }
+                    else {
+                        $row.show();
+                    }
+                }
+            });
+        });
+    </script>
 {% endblock %}

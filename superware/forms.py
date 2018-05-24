@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-import datetime
 from django import forms
-from django.contrib.auth.models import User
+
 from superware.models import *
 
 
@@ -15,7 +14,8 @@ class ArticuloForm(forms.ModelForm):
                   'stock',
                   'precio',
                   'codigoBarras',
-                  'observaciones')
+                  'observaciones',
+                  'foto')
 
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'form-control'}),

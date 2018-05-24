@@ -38,39 +38,40 @@
                     SUPERWARE <br>
                 </a>
             </div>
-
-            <ul class="nav">
-                <li class="active">
-                    <a href="{% url 'superware:ventas' %}">
-                        <i class="ti-shopping-cart-full"></i>
-                        <p>Ventas</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'superware:listarInventario' %}">
-                        <i class="ti-server"></i>
-                        <p>Inventario</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'superware:consultas' %}">
-                        <i class="ti-view-list-alt"></i>
-                        <p>Consultas</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="estadisticas.html">
-                        <i class="ti-stats-up"></i>
-                        <p>Estadisticas</p>
-                    </a>
-                </li>
-                <li class="active-pro">
-                    <a href="{% url 'superware:logout' %}">
-                        <i class="ti-shift-left"></i>
-                        <p>Salir</p>
-                    </a>
-                </li>
-            </ul>
+            {% block modulo %}
+                <ul class="nav">
+                    <li class="active">
+                        <a href="{% url 'superware:ventas' %}">
+                            <i class="ti-shopping-cart-full"></i>
+                            <p>Ventas</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'superware:listarInventario' %}">
+                            <i class="ti-server"></i>
+                            <p>Inventario</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'superware:consultas' %}">
+                            <i class="ti-view-list-alt"></i>
+                            <p>Consultas</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'superware:estadisticas' %}">
+                            <i class="ti-stats-up"></i>
+                            <p>Estadisticas</p>
+                        </a>
+                    </li>
+                    <li class="active-pro">
+                        <a href="{% url 'superware:logout' %}">
+                            <i class="ti-shift-left"></i>
+                            <p>Salir</p>
+                        </a>
+                    </li>
+                </ul>
+            {% endblock %}
         </div>
     </div>
 
@@ -89,7 +90,7 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
+                        {% comment %}<li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="ti-bell"></i>
                                 <p class="notification">5</p>
@@ -103,7 +104,7 @@
                                 <li><a href="#">Notificación 4</a></li>
                                 <li><a href="#">Ver más...</a></li>
                             </ul>
-                        </li>
+                        </li>{% endcomment %}
                         <li>
                             <a href="{% url 'superware:menuRespaldos' %}">
                                 <i class="ti-settings"></i>
